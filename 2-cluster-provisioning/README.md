@@ -5,9 +5,6 @@
 
  - To create creating a fully-functioning cluster in a single command use a configuration file like the below:
 ```
-# cluster.yaml
-# An example of ClusterConfig containing Windows and Linux node groups to support Windows workloads
----
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
