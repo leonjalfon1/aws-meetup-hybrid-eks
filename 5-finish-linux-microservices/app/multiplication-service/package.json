@@ -1,0 +1,16 @@
+{
+  "name": "multiplication-service",
+  "version": "1.0.0",
+  "description": "multiplication service",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Leon Jalfon",
+  "license": "MIT"
+}

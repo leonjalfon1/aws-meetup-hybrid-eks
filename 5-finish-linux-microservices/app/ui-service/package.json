@@ -1,0 +1,25 @@
+{
+  "name": "ui-service",
+  "version": "1.0.0",
+  "description": "ui-service",
+  "main": "server.js",
+  "scripts": {
+    "test": "jasmine-node spec",
+    "build": "pack-zip",
+    "config": "config.sh",
+    "start": "node server.js"
+  },
+  "author": "Leon Jalfon",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "fs": "0.0.1-security",
+    "jasmine": "^3.1.0",
+    "jasmine-node": "^1.14.5",
+    "pack-zip": "^0.2.2",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "pack-zip": "^0.2.2"
+  }
+}
