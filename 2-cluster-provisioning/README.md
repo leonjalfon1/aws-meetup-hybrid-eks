@@ -25,6 +25,8 @@ nodeGroups:
     desiredCapacity: 2
 ```
 
+---
+
 ## Deploy the EKS cluster
 
  - To deploy the EKS cluster use the command below (use the flag --install-vpc-controllers to install required tools for windows nodes):
@@ -33,9 +35,13 @@ nodeGroups:
 $ eksctl create cluster -f cluster.yaml --install-vpc-controllers
 ```
 
+---
+
 ## Notes
 
  - You can delete the cluster by using the command below:
 ```
 $ eksctl delete cluster --name=leonj-aws-meetup --region=ap-southeast-1
 ```
+
+---
