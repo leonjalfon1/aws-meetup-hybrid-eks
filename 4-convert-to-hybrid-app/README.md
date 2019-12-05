@@ -7,44 +7,44 @@ Then we will update the monolith application and integrate it with the linux mic
 
 ---
 
-## Update the monolith application
-
- - Update the application to remove the sum and subtraction operations by run:
-```
-kubectl apply -f ./kubernetes/sum-service/deployment.yaml
-```
-
- - Browse to the application (note that sum and subtraction results are not available):
-```
-http://<node-ip>:80
-```
-
----
-
 ## Deploy the sum-service
 
- - Deploy the sum-service as a kubernetes deployment by run:
+ - Deploy the sum-service by run:
 ```
-kubectl apply -f ./kubernetes/sum-service/deployment.yaml
+kubectl apply -f ./kubernetes/sum-service/
 ```
 
- - Browse to the application (note that sum results are now available):
+ - Browse to the application:
 ```
-http://<node-ip>:80
+http://<ip>:30001/sum/2/3
 ```
 
 ---
 
 ## Deploy the subtraction-service
 
- - Deploy the subtraction-service as a kubernetes deployment by run:
+ - Deploy the subtraction-service by run:
 ```
-kubectl apply -f ./kubernetes/subtraction-service/deployment.yaml
+kubectl apply -f ./kubernetes/subtraction-service/
 ```
 
- - Browse to the application (note that subtraction results are now available):
+ - Browse to the application:
 ```
-http://<node-ip>:80
+http://<ip>:30002/subtraction/7/2
+```
+
+---
+
+## Update the monolith application
+
+ - Update the application to extract the sum and subtraction operations by run:
+```
+kubectl apply -f ./kubernetes/monolith/
+```
+
+ - Browse to the main application:
+```
+http://<ip>:80
 ```
 
 ---
