@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sum-service
+spec:
+  type: NodePort
+  ports:
+  - name: sum-service
+    port: 30001
+    targetPort: 3000
+    nodePort: 30001
+  selector:
+    app: sum-service
+  

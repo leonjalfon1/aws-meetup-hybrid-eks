@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sum-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sum-service
+  template:
+    metadata:
+      labels:
+        app: sum-service
+      name: sum-service
+    spec:
+      containers:
+      - name: sum-service
+        image: leonjalfon1/aws-meetup-hybrid-microservices:sum-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+      nodeSelector:
+        beta.kubernetes.io/os: linux

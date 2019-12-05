@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: subtraction-service
+spec:
+  type: NodePort
+  ports:
+  - name: subtraction-service
+    port: 30002
+    targetPort: 3000
+    nodePort: 30002
+  selector:
+    app: subtraction-service
+  

@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: multiplication-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multiplication-service
+  template:
+    metadata:
+      labels:
+        app: multiplication-service
+      name: multiplication-service
+    spec:
+      containers:
+      - name: multiplication-service
+        image: leonjalfon1/aws-meetup-hybrid-microservices:multiplication-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+      nodeSelector:
+        beta.kubernetes.io/os: linux

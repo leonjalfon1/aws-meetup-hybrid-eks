@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ui-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui-service
+  template:
+    metadata:
+      labels:
+        app: ui-service
+      name: ui-service
+    spec:
+      containers:
+      - name: ui-service
+        image: leonjalfon1/aws-meetup-hybrid-microservices:ui-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: "SERVICE_IP"
+          value: "18.136.205.8"  # IP OF A CLUSTER NODE
+        - name: "SERVICE_PORT"
+          value: "30000"
+        - name: "SUM_SERVICE_IP"
+          value: "18.136.205.8" 
+        - name: "SUM_SERVICE_PORT"
+          value: "30001"
+        - name: "SUBTRACTION_SERVICE_IP"
+          value: "18.136.205.8"  
+        - name: "SUBTRACTION_SERVICE_PORT"
+          value: "30002"
+        - name: "MULTIPLICATION_SERVICE_IP"
+          value: "18.136.205.8" 
+        - name: "MULTIPLICATION_SERVICE_PORT"
+          value: "30003"
+        - name: "DIVISION_SERVICE_IP"
+          value: "18.136.205.8" 
+        - name: "DIVISION_SERVICE_PORT"
+          value: "30004"
+      nodeSelector:
+        beta.kubernetes.io/os: linux

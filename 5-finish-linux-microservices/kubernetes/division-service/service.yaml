@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: division-service
+spec:
+  type: NodePort
+  ports:
+  - name: division-service
+    port: 30004
+    targetPort: 3000
+    nodePort: 30004
+  selector:
+    app: division-service
+  
