@@ -13,12 +13,12 @@ angular.module('services', [])
             $scope.subtraction = response.data;
         });
 		
-	    $http.get("http://localhost:3000/multiplication/"+$scope.number1+"/"+$scope.number2)
+	    $http.get("http://SERVICE_IP:SERVICE_PORT/multiplication/"+$scope.number1+"/"+$scope.number2)
 		.then(function(response) {
             $scope.multiplication = response.data;
         });
 		
-	    $http.get("http://localhost:3000/division/"+$scope.number1+"/"+$scope.number2)
+	    $http.get("http://SERVICE_IP:SERVICE_PORT/division/"+$scope.number1+"/"+$scope.number2)
 		.then(function(response) {
             $scope.division = response.data;
         });
