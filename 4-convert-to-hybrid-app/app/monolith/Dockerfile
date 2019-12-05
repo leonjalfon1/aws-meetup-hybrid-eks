@@ -6,16 +6,20 @@ WORKDIR /usr/src/app
 COPY . .
 EXPOSE 3000
 
+ENV SERVICE_IP=localhost
+ENV SERVICE_PORT=30000
 ENV SUM_SERVICE_IP=localhost
-ENV SUM_SERVICE_PORT=3000
+ENV SUM_SERVICE_PORT=30000
 ENV SUBTRACTION_SERVICE_IP=localhost
-ENV SUBTRACTION_SERVICE_PORT=3000
+ENV SUBTRACTION_SERVICE_PORT=30000
 
 CMD Write-Host "Configuring services endpoints..." ; \
-    (Get-Content .\services-controller.js) | foreach-object {$_ -replace 'SUM_SERVICE_IP', "$env:SUM_SERVICE_IP"} | set-content .\services-controller.js ; \ 
-    (get-content .\services-controller.js) | foreach-object {$_ -replace 'SUM_SERVICE_PORT', "$env:SUM_SERVICE_PORT"} | set-content .\services-controller.js ; \ 
-    (get-content .\services-controller.js) | foreach-object {$_ -replace 'SUBTRACTION_SERVICE_IP', "$env:SUBTRACTION_SERVICE_IP"} | set-content .\services-controller.js ; \ 
-    (get-content .\services-controller.js) | foreach-object {$_ -replace 'SUBTRACTION_SERVICE_PORT', "$env:SUBTRACTION_SERVICE_PORT"} | set-content .\services-controller.js ; \ 
+	(Get-Content .\services-controller.js) | foreach-object {$_ -replace 'SUM_SERVICE_IP', "$env:SUM_SERVICE_IP"} | set-content .\services-controller.js ; \ 
+    (Get-content .\services-controller.js) | foreach-object {$_ -replace 'SUM_SERVICE_PORT', "$env:SUM_SERVICE_PORT"} | set-content .\services-controller.js ; \ 
+    (Get-content .\services-controller.js) | foreach-object {$_ -replace 'SUBTRACTION_SERVICE_IP', "$env:SUBTRACTION_SERVICE_IP"} | set-content .\services-controller.js ; \ 
+    (Get-content .\services-controller.js) | foreach-object {$_ -replace 'SUBTRACTION_SERVICE_PORT', "$env:SUBTRACTION_SERVICE_PORT"} | set-content .\services-controller.js ; \ 
+	(Get-Content .\services-controller.js) | foreach-object {$_ -replace 'SERVICE_IP', "$env:SERVICE_IP"} | set-content .\services-controller.js ; \ 
+    (Get-content .\services-controller.js) | foreach-object {$_ -replace 'SERVICE_PORT', "$env:SERVICE_PORT"} | set-content .\services-controller.js ; \ 
     npm start; 
     
 
