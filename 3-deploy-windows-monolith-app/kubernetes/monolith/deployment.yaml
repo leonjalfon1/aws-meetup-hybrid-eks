@@ -21,7 +21,7 @@ spec:
         - containerPort: 3000
         env:
         - name: "SERVICE_IP"
-          value: "18.136.205.8"
+          value: "18.136.205.8"  # IP OF A CLUSTER NODE
         - name: "SERVICE_PORT"
           value: "30000"
       nodeSelector:
