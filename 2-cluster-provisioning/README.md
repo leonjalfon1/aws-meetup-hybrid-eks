@@ -39,6 +39,16 @@ $ eksctl create cluster -f cluster.yaml --install-vpc-controllers
 
 ## Notes
 
+ - You can inspect the cluster nodegroups by run:
+```
+eksctl get nodegroup --cluster=leonj-aws-meetup --region=ap-southeast-1
+```
+
+ - To scale node group you can use:
+```
+eksctl scale nodegroup --cluster=leonj-aws-meetup --nodes=5 --name=linux-nodes
+```
+
  - You can delete the cluster by using the command below:
 ```
 $ eksctl delete cluster --name=leonj-aws-meetup --region=ap-southeast-1

@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: calculator-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculator-app
+  template:
+    metadata:
+      labels:
+        app: calculator-app
+      name: calculator-app
+    spec:
+      containers:
+      - name: calculator-app
+        image: leonjalfon1/aws-meetup-hybrid-microservices:monolith
+        ports:
+        - containerPort: 3000
+      nodeSelector:
+        beta.kubernetes.io/os: windows
+        
