@@ -16,8 +16,14 @@ spec:
       containers:
       - name: calculator-app
         image: leonjalfon1/aws-meetup-hybrid-microservices:monolith
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        env:
+        - name: "SERVICE_IP"
+          value: "18.136.205.8"
+        - name: "SERVICE_PORT"
+          value: "30000"
       nodeSelector:
         beta.kubernetes.io/os: windows
         
