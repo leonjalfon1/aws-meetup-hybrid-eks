@@ -37,14 +37,14 @@ http://<ip>:30002/subtraction/7/2
 
 ## Update the monolith application
 
- - Update the application to extract the sum and subtraction operations by run:
+ - Update the application to remove the sum and subtraction operations and use the micrososervices instead:
 ```
-kubectl apply -f ./kubernetes/monolith/
+kubectl apply -f ./kubernetes/hybrid/
 ```
 
  - Browse to the main application:
 ```
-http://<ip>:80
+http://<ip>:30000
 ```
 
 ---

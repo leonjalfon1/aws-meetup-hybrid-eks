@@ -14,6 +14,11 @@ Then we will update the monolith application to run on linux as a ui-services
 kubectl apply -f ./kubernetes/multiplication-service/
 ```
 
+ - Browse to the application:
+```
+http://<ip>:30003/multiplication/3/3
+```
+
 ---
 
 ## Deploy the division-service
@@ -23,24 +28,29 @@ kubectl apply -f ./kubernetes/multiplication-service/
 kubectl apply -f ./kubernetes/division-service/
 ```
 
+ - Browse to the application:
+```
+http://<ip>:30004/division/8/2
+```
+
 ---
 
 ## Convert monolith application to linux ui-service
+
+ - Remove the monolith deployment (windows)
+```
+kubectl delete deployment calculator-app
+kubectl delete service calculator-app
+```
 
  - Deploy the ui-service (linux)
 ```
 kubectl apply -f ./kubernetes/ui-service/
 ```
 
- - Remove the monolith deployment (windows)
-```
-kubectl delete deployment monolith
-```
-
-
  - Browse to the application (note that sum and subtraction results are not available):
 ```
-http://<node-ip>:80
+http://<ip>:30000
 ```
 
 ---
