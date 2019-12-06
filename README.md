@@ -1,8 +1,8 @@
 # AWS Meetup: Building Hybrid Microservices on EKS
 
- This repository summarize the meetup that took place on Sunday 08/12 at AWS offices on Floor 28, Tel Aviv. 
- During the talk we spoke about how to deploy and manage hybrid microservices on EKS (windows and linux containers).  
- In this repo you will find the steps to review one of the most common use cases "how to convert a windows monolith application into a linux microservices" (running on kubernetes from the beginning of the process) 
+ - This repository summarize the meetup that took place on Sunday 08/12 at AWS offices on Floor 28, Tel Aviv. 
+ - During the talk we spoke about how to deploy and manage hybrid microservices on EKS (windows and linux containers).  
+ - In this repo you will find the steps to review one of the most common use cases "how to convert a windows monolith application into a linux microservices" (running on kubernetes from the beginning of the process) 
  
 ## 1) Introduction
 
