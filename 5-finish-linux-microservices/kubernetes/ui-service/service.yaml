@@ -6,8 +6,8 @@ spec:
   type: NodePort
   ports:
   - name: ui-service
-    port: 30000
+    port: 30005
     targetPort: 3000
-    nodePort: 30000
+    nodePort: 30005
   selector:
     app: ui-service

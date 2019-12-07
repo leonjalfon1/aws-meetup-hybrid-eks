@@ -1,4 +1,4 @@
-# cluster.yaml
+# hybrid-cluster-sg.yaml
 # An example of ClusterConfig containing Windows and Linux node groups to support Windows workloads
 ---
 apiVersion: eksctl.io/v1alpha5
@@ -14,8 +14,17 @@ nodeGroups:
     minSize: 1
     maxSize: 3
     desiredCapacity: 2
+    securityGroups:
+      withShared: true
+      withLocal: true
+      attachIDs: ['sg-00000000000000000']
+      
   - name: linux-nodes
     instanceType: t2.large
     minSize: 1
     maxSize: 3
     desiredCapacity: 2
+    securityGroups:
+      withShared: true
+      withLocal: true
+      attachIDs: ['sg-00000000000000000']

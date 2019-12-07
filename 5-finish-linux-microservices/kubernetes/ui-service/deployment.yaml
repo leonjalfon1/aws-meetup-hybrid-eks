@@ -21,23 +21,23 @@ spec:
         - containerPort: 3000
         env:
         - name: "SERVICE_IP"
-          value: "18.136.205.8"  # IP OF A CLUSTER NODE
+          value: "<CLUSTER-NODE-API>"  # IP OF A CLUSTER NODE
         - name: "SERVICE_PORT"
           value: "30000"
         - name: "SUM_SERVICE_IP"
-          value: "18.136.205.8" 
+          value: "<CLUSTER-NODE-API>" 
         - name: "SUM_SERVICE_PORT"
           value: "30001"
         - name: "SUBTRACTION_SERVICE_IP"
-          value: "18.136.205.8"  
+          value: "<CLUSTER-NODE-API>"  
         - name: "SUBTRACTION_SERVICE_PORT"
           value: "30002"
         - name: "MULTIPLICATION_SERVICE_IP"
-          value: "18.136.205.8" 
+          value: "<CLUSTER-NODE-API>" 
         - name: "MULTIPLICATION_SERVICE_PORT"
           value: "30003"
         - name: "DIVISION_SERVICE_IP"
-          value: "18.136.205.8" 
+          value: "<CLUSTER-NODE-API>" 
         - name: "DIVISION_SERVICE_PORT"
           value: "30004"
       nodeSelector:
