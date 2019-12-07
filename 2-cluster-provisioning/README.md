@@ -14,14 +14,9 @@
 
 ## Create an EKS cluster
 
- - We will use a ClusterConfig yaml to manage the cluster using infrastructure as code:
+ -  To create an empty cluster (only control plane without nodes) with eksctl, run:
 ```
-cat ./empty/empty-cluster.yaml
-```
-
- -  To create an empty cluster usign eksctl run:
-```
-eksctl create cluster -f ./empty/empty-cluster.yaml --without-nodegroup
+eksctl create cluster --name leonj-aws-meetup --region ap-southeast-1 --without-nodegroup
 ```
 
 ---
@@ -80,25 +75,25 @@ aws ec2 authorize-security-group-ingress \
 ```
 aws ec2 authorize-security-group-ingress \
   --group-id $SECURITY_GROUP_ID \
-  --ip-permissions '[{"IpProtocol": "tcp", "FromPort": 30000, "ToPort": 30005, "Ipv6Ranges": [{"CidrIpv6": "0.0.0.0/0", "Description": "Expose ports 30000-30004"}]}]' \
+  --ip-permissions '[{"IpProtocol": "tcp", "FromPort": 30000, "ToPort": 30005, "IpRanges": [{"CidrIp": "0.0.0.0/0", "Description": "Expose ports 30000-30004"}]}]' \
   --region=ap-southeast-1
 ```
 
 ## Create the cluster nodes (windows and linux)
 
- - Update the file "hybrid-cluster-sg.yaml" to add the security group to the cluster nodes:
+ - Update the file "hybrid-cluster.yaml" to add the security group to the cluster nodes:
 ```
-sed -i -e 's#sg-00000000000000000#'"$SECURITY_GROUP_ID"'#g' ./nodes/hybrid-cluster.yaml
+sed -i -e 's#sg-00000000000000000#'"$SECURITY_GROUP_ID"'#g' ./hybrid-cluster.yaml
 ```
 
- - Check the ClusterConfig yaml:
+ - Check the ClusterConfig yaml (used to manage the cluster with infrastrure as code):
 ```
-cat ./nodes/hybrid-cluster.yaml
+cat ./hybrid-cluster.yaml
 ```
 
  - Use eksctl to create the cluster nodes based on the configuration:
 ```
-eksctl create nodegroup -f ./nodes/hybrid-cluster.yaml 
+eksctl create nodegroup -f ./hybrid-cluster.yaml 
 ```
 
  - Install the windows VPC controller:

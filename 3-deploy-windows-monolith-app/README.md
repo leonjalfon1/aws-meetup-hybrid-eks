@@ -34,6 +34,11 @@ kubectl apply -f ./kubernetes/monolith/service.yaml
 
 ## Access the Application
 
+ - Wait until the depluyment is ready:
+```
+kubectl get pods -w
+```
+
  - Browse to:
 ```
 http://<cluster-node-ip>:30000
