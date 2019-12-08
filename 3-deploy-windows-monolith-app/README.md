@@ -41,6 +41,9 @@ kubectl get pods -w
 
  - Browse to:
 ```
+echo CLUSTER_NODE_IP: $CLUSTER_NODE_IP
+```
+```
 http://<cluster-node-ip>:30000
 ```
 

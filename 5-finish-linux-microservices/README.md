@@ -3,7 +3,7 @@
 
 In this section we will finish to convert our application to an linux microservices
 We will create two new applications: multiplication-service and division-service
-Then we will update the monolith application to run on linux as a ui-services
+Then we will replace the monolith application (windows) with the ui-service (linux)
 
 ---
 
@@ -49,20 +49,29 @@ echo CLUSTER_NODE_IP: $CLUSTER_NODE_IP
 sed -i -e 's#<CLUSTER-NODE-API>#'"$CLUSTER_NODE_IP"'#g' ./kubernetes/ui-service/deployment.yaml
 ```
 
- - Remove the monolith deployment (windows)
-```
-kubectl delete deployment calculator-app
-kubectl delete service calculator-app
-```
-
  - Deploy the ui-service (linux)
 ```
 kubectl apply -f ./kubernetes/ui-service/
 ```
 
+## Access the Application
+
+ - Wait until the deployment is ready:
+```
+kubectl get pods -w
+```
+
  - Browse to the application (note that sum and subtraction results are not available):
 ```
 http://<cluster-node-ip>:30005
+```
+
+## Remove the monolith after test the application
+
+ - Remove the monolith deployment (windows)
+```
+kubectl delete deployment calculator-app
+kubectl delete service calculator-app
 ```
 
 ---

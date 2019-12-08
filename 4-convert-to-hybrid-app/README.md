@@ -37,7 +37,7 @@ http://<cluster-node-ip>:30002/subtraction/7/2
 
 ## Update the monolith application
 
- - Create a variable to store a node IP
+ - Create a environment variable to store a node IP
 ```
 CLUSTER_NODES_IPS=$(kubectl get nodes -o json | jq -r '.items[] | .status .addresses[] | select(.type=="ExternalIP") | .address')
 CLUSTER_NODE_IP=$(echo $CLUSTER_NODES_IPS | awk -F'[ ]' '{print $1}')
@@ -52,6 +52,13 @@ sed -i -e 's#<CLUSTER-NODE-API>#'"$CLUSTER_NODE_IP"'#g' ./kubernetes/hybrid/depl
  - Update the application to remove the sum and subtraction operations and use the micrososervices instead:
 ```
 kubectl apply -f ./kubernetes/hybrid/
+```
+
+## Access the Application
+
+ - Wait until the depluyment is ready:
+```
+kubectl get pods -w
 ```
 
  - Browse to the main application:

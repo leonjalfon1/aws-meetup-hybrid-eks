@@ -21,28 +21,6 @@ eksctl create cluster --name leonj-aws-meetup --region ap-southeast-1 --without-
 
 ---
 
-## Review the use case and meet the demo application
-
-#### Use Case
-
- - Convert a windows monolith application into a linux microservices
-
-#### Demo Application
-
- - The demo application is a web calculator
- - Currently is working as a monolith (all the operations are done under the same service)
- - We will run the applications as kubernetes deployments
- - The application will be exposed using NodePort services
-
-<image>
-
- - Our target is transform the monolith into 5 microservices:
-   - ui-service (port 30000)
-   - sum-service (port 30001)
-   - subtraction-service (port 30002)
-   - multiplication-service (port 30003)
-   - division-service (port 30004)
-
 ## Create a security group to expose application ports
 
  - Store the cluster VPC ID in a variable
@@ -65,17 +43,17 @@ SECURITY_GROUP_ID=$(aws ec2 create-security-group \
 echo SECURITY_GROUP_ID: $SECURITY_GROUP_ID
 ```
 
- - Configure the security group to expose ports 30000-30004:
+ - Configure the security group to expose ports 30000-30005:
 ```
 aws ec2 authorize-security-group-ingress \
   --group-id $SECURITY_GROUP_ID \
-  --ip-permissions '[{"IpProtocol": "tcp", "FromPort": 30000, "ToPort": 30005, "Ipv6Ranges": [{"CidrIpv6": "::/0", "Description": "Expose ports 30000-30004"}]}]' \
+  --ip-permissions '[{"IpProtocol": "tcp", "FromPort": 30000, "ToPort": 30005, "Ipv6Ranges": [{"CidrIpv6": "::/0", "Description": "Expose ports 30000-30005"}]}]' \
   --region=ap-southeast-1
 ```
 ```
 aws ec2 authorize-security-group-ingress \
   --group-id $SECURITY_GROUP_ID \
-  --ip-permissions '[{"IpProtocol": "tcp", "FromPort": 30000, "ToPort": 30005, "IpRanges": [{"CidrIp": "0.0.0.0/0", "Description": "Expose ports 30000-30004"}]}]' \
+  --ip-permissions '[{"IpProtocol": "tcp", "FromPort": 30000, "ToPort": 30005, "IpRanges": [{"CidrIp": "0.0.0.0/0", "Description": "Expose ports 30000-30005"}]}]' \
   --region=ap-southeast-1
 ```
 
@@ -98,7 +76,7 @@ eksctl create nodegroup -f ./hybrid-cluster.yaml
 
  - Install the windows VPC controller:
 ```
-eksctl utils install-vpc-controllers --name=leonj-aws-meetup --region=ap-southeast-1 --approve
+eksctl utils install-vpc-controllers --cluster=leonj-aws-meetup --region=ap-southeast-1 --approve
 ```
 
 ---
@@ -108,6 +86,11 @@ eksctl utils install-vpc-controllers --name=leonj-aws-meetup --region=ap-southea
  - You can inspect the cluster nodegroups by run:
 ```
 eksctl get nodegroup --cluster=leonj-aws-meetup --region=ap-southeast-1
+```
+
+ - You can remove a cluster nodegroup by run:
+```
+eksctl delete nodegroup <nodegroup-name> --cluster=leonj-aws-meetup --region=ap-southeast-1
 ```
 
  - To scale a node group you can use:

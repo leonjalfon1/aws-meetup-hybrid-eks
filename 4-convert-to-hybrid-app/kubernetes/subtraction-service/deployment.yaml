@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: sum-service
+  name: subtraction-service
 spec:
   replicas: 1
   selector:

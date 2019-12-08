@@ -1,7 +1,9 @@
 # INTRODUCTION
 ---
 
-## Create Cloud9 Environment
+## ConfigureCloud9 Workspace for the lab
+
+#### Create Cloud9 Environment
 
  - Launch Cloud9 in your closest region (oregon, ireland, ohio, singapore)
 
@@ -43,7 +45,7 @@ aws sts get-caller-identity
 
 ---
 
-## Install Kubernetes tools
+#### Install Kubernetes tools
 
  - Install kubectl
 ```
@@ -73,7 +75,7 @@ kubectl completion bash >>  ~/.bash_completion
 
 ---
 
-## Install eksctl
+#### Install eksctl
 
  - Download eksctl 
 ```
@@ -95,3 +97,24 @@ eksctl completion bash >> ~/.bash_completion
 
 ---
 
+## Review the use case and meet the demo application
+
+#### Use Case
+
+ - Convert a windows monolith application into a linux microservices
+
+#### Demo Application
+
+ - The demo application is a web calculator
+ - Currently is working as a monolith (all the operations are done under the same service)
+ - We will run the applications as kubernetes deployments
+ - The application will be exposed using NodePort services
+
+[[[image]]]
+
+ - Our target is transform the monolith (port 30000) into 5 microservices:
+   - sum-service (port 30001)
+   - subtraction-service (port 30002)
+   - multiplication-service (port 30003)
+   - division-service (port 30004)
+   - ui-service (port 30005)

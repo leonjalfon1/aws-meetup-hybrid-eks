@@ -9,16 +9,6 @@ metadata:
   region: ap-southeast-1
 
 nodeGroups:
-  - name: windows-nodes
-    amiFamily: WindowsServer2019FullContainer
-    minSize: 1
-    maxSize: 3
-    desiredCapacity: 2
-    securityGroups:
-      withShared: true
-      withLocal: true
-      attachIDs: ['sg-00000000000000000']
-      
   - name: linux-nodes
     instanceType: t2.large
     minSize: 1
